@@ -10,7 +10,7 @@ del área como del perímetro
 
 using System;
 
-public class Program()
+public class Program
 {
     public static void Main()
     {
@@ -18,19 +18,21 @@ public class Program()
         int opcion = 0;
         bool opcionMenu = true;
 
-        Console.WriteLine("Este programa permite obtner el área y perimetro\n");
-        Console.WriteLine("Seleccione la figura a calcular:\n 1.Cuadrado\n 2.Rectángulo\n 3.Triángulo\n 4.Círculo\n 5.Rombo\n 6.Trapecio\n 7.Polígono regular\n");
-        opcion = Convert.ToInt32(Console.ReadLine());
-
-
+       
         while (opcionMenu == true)
         {
+            //inicia con un mensaje de lo que hace el programa
+            Console.WriteLine("Este programa permite obtner el área y perimetro\n");
+            Console.WriteLine("Seleccione la figura a calcular:\n 1.Cuadrado\n 2.Rectángulo\n 3.Triángulo\n 4.Círculo\n 5.Rombo\n 6.Trapecio\n 7.Polígono regular\n");
+            opcion = Convert.ToInt32(Console.ReadLine());
+
             switch (opcion)
             {
-                case 1: Console.WriteLine("\nCUADRADO"); break;
+                case 1: Console.WriteLine("\nCUADRADO"); 
                     Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Console.ReadLine());  
-                    
+                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
+                    break;
+
 
                 case 2: Console.WriteLine("\nRECTÁNGULO"); break;
 
@@ -47,7 +49,7 @@ public class Program()
                 default: Console.WriteLine("Ingrese  una opción válida!"); Console.Beep(); break;
             }
         }
-
+        Console.WriteLine("\n!Programa terminado!");
 
 
 
