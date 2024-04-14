@@ -118,11 +118,35 @@ public class triangulo //clase creada para el triangulo
         area = (base_tr * altura_tr);
         perimetro = (lado1 + lado2 + lado3);
         Console.WriteLine("\nEl área del triángulo es: {0:N2}", area); //muestra el valor del area
-        Console.WriteLine("El valor del perimetro es: {0:N2}",perimetro);
+        Console.WriteLine("El valor del perímetro es: {0:N2}",perimetro);
         Console.Beep();
     }
 }
 
+
+public class circulo //clase para la figura del circulo 
+{//declaramos los atributos de la clase
+    public double radio; 
+
+    //metodos de la clase
+    public double ingresarRadio()
+    {
+        double radio;
+        Console.WriteLine("Ingrese el valor del radio: ");
+        radio = Convert.ToDouble(Console.ReadLine());
+        return radio;
+    }
+
+    public void calcular()
+    {
+        double area; double perimetro;
+        area = (Math.PI * radio);
+        perimetro = ((2*radio) * (Math.PI));
+        Console.WriteLine("El área del círculo es: {0:N2}", area);
+        Console.WriteLine("El perímetro del círculo es; {0:N2}", perimetro);
+        Console.Beep();
+    }
+}
 
 
 
