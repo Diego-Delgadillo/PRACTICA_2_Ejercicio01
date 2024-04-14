@@ -30,12 +30,41 @@ public class cuadrado//declaramos la clase para el cuadrado
         Console.WriteLine("\nEl área del cuadrado es: " + area + "\nEl perímetro del cuadrado es: " + perimetro+ "\n");
         Console.Beep();
     }
-
 }
 
+public class rectangulo
+{
+    //atriubtos de la clase
+    public double base_rect;
+    public double altura_rect;
 
+    //metodos de la clase
+    public double ingresarBase() //para ingresar la base del rectangulo
+    {
+        Console.WriteLine("Ingrese el valor de la base: ");
+        base_rect = Convert.ToDouble(Console.ReadLine());     
+        return base_rect;
+    }
 
+    public double ingresarAltura() //para ingresar la altura del rectangulo
+    {
+        Console.WriteLine("Ingrese el valor de la altura: ");
+        altura_rect = Convert.ToDouble(Console.ReadLine());
+        return altura_rect;
+    }
 
+    //metodo para calcular area y perimetro
+    public void calcular(double base_rect, double altura_rect)
+    {
+        double area;
+        double perimetro;
+        area = (base_rect * altura_rect);
+        perimetro = (base_rect*2) + (altura_rect*2);
+        Console.WriteLine("\nEl área del rectángulo es: {0:N2}", area);
+        Console.WriteLine("El perimetro del rectángulo es: {0:N2}\n", perimetro);
+        Console.Beep();
+    }
+}
 
 
 
@@ -95,6 +124,10 @@ public class Program
                     break;
 
                 case 2: Console.WriteLine("\nRECTÁNGULO");
+                    rectangulo rectanguloUsuario = new rectangulo();
+                    rectanguloUsuario.base_rect = rectanguloUsuario.ingresarBase();
+                    rectanguloUsuario.altura_rect = rectanguloUsuario.ingresarAltura();
+                    rectanguloUsuario.calcular(rectanguloUsuario.base_rect, rectanguloUsuario.altura_rect);
                     opcionMenu = continuar();break;
 
                 case 3: Console.WriteLine("\nTRIÁNGULO");
