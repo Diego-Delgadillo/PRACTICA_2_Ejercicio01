@@ -32,11 +32,10 @@ public class cuadrado//declaramos la clase para el cuadrado
     }
 }
 
-public class rectangulo
+public class rectangulo //clase del rectangulo
 {
     //atriubtos de la clase
-    public double base_rect;
-    public double altura_rect;
+    public double base_rect; public double altura_rect;
 
     //metodos de la clase
     public double ingresarBase() //para ingresar la base del rectangulo
@@ -56,8 +55,7 @@ public class rectangulo
     //metodo para calcular area y perimetro
     public void calcular(double base_rect, double altura_rect)
     {
-        double area;
-        double perimetro;
+        double area; double perimetro;
         area = (base_rect * altura_rect);
         perimetro = (base_rect*2) + (altura_rect*2);
         Console.WriteLine("\nEl área del rectángulo es: {0:N2}", area);
@@ -65,6 +63,66 @@ public class rectangulo
         Console.Beep();
     }
 }
+
+
+public class triangulo //clase creada para el triangulo 
+{
+    //atributos de la clase
+    public double lado1; public double lado2; public double lado3; public double base_tr; public double altura_tr;
+
+    //metodos de la clase
+    public double ingresarLado1()
+    {
+        double lado1;
+        Console.WriteLine("Ingrese el valor del primer lado: ");
+        lado1 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        return lado1;
+    }
+
+    public double ingresarLado2()
+    {
+        double lado2;
+        Console.WriteLine("Ingrese el valor del segundo lado: ");
+        lado2 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        return lado2;
+    }
+
+    public double ingresarLado3()
+    {
+        double lado3;
+        Console.WriteLine("Ingrese el valor del tercer lado: ");
+        lado3 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        return lado3;
+    }
+
+    public double ingresarBase_tr()
+    {
+        double base_tr;
+        Console.WriteLine("Ingrese el valor de la base: ");
+        base_tr = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        return base_tr;
+    }
+
+    public double ingresarAltura_tr()
+    {
+        double altura_tr;
+        Console.WriteLine("Ingrese el valor de la altura: ");
+        altura_tr = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        return altura_tr;
+    }
+
+    //metodo para calcular el area y perimetro con los atributos previamente capturados
+    public void calcular(double lado1, double lado2, double lado3, double base_tr, double altura_tr)
+    { //declaramos las variables a utilizar
+        double area; double perimetro;
+        area = (base_tr * altura_tr);
+        perimetro = (lado1 + lado2 + lado3);
+        Console.WriteLine("\nEl área del triángulo es: {0:N2}", area); //muestra el valor del area
+        Console.WriteLine("El valor del perimetro es: {0:N2}",perimetro);
+        Console.Beep();
+    }
+}
+
 
 
 
@@ -131,6 +189,13 @@ public class Program
                     opcionMenu = continuar();break;
 
                 case 3: Console.WriteLine("\nTRIÁNGULO");
+                    triangulo trianguloUsuario = new triangulo();
+                    trianguloUsuario.lado1 = trianguloUsuario.ingresarLado1();
+                    trianguloUsuario.lado2 = trianguloUsuario.ingresarLado2();
+                    trianguloUsuario.lado3 = trianguloUsuario.ingresarLado3();
+                    trianguloUsuario.base_tr = trianguloUsuario.ingresarBase_tr();
+                    trianguloUsuario.altura_tr = trianguloUsuario.ingresarAltura_tr();
+                    trianguloUsuario.calcular(trianguloUsuario.lado1, trianguloUsuario.lado2, trianguloUsuario.lado3, trianguloUsuario.base_tr, trianguloUsuario.altura_tr);
                     opcionMenu = continuar(); break;
 
                 case 4: Console.WriteLine("\nCÍRCULO");
@@ -153,34 +218,6 @@ public class Program
         Console.ReadKey(true);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
