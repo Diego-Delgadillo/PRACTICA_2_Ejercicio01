@@ -118,7 +118,7 @@ public class triangulo //clase creada para el triangulo
         area = (base_tr * altura_tr);
         perimetro = (lado1 + lado2 + lado3);
         Console.WriteLine("\nEl área del triángulo es: {0:N2}", area); //muestra el valor del area
-        Console.WriteLine("El valor del perímetro es: {0:N2}",perimetro);
+        Console.WriteLine("El valor del perímetro es: {0:N2}\n", perimetro);
         Console.Beep();
     }
 }
@@ -137,17 +137,51 @@ public class circulo //clase para la figura del circulo
         return radio;
     }
 
-    public void calcular()
+    public void calcular(double radio)
     {
         double area; double perimetro;
         area = (Math.PI * radio);
         perimetro = ((2*radio) * (Math.PI));
-        Console.WriteLine("El área del círculo es: {0:N2}", area);
-        Console.WriteLine("El perímetro del círculo es; {0:N2}", perimetro);
+        Console.WriteLine("\nEl área del círculo es: {0:N2}", area);
+        Console.WriteLine("El perímetro del círculo es; {0:N2}\n", perimetro);
         Console.Beep();
     }
 }
 
+public class rombo
+{//declaramos los atributos de la clase 
+    public double diagonalMayor;
+    public double diagonalMenor;
+
+    //creamos los metodos
+    public double ingresarDiagonalMayor()
+    {
+        double diagonalMayor;
+        Console.WriteLine("Ingrese el valor de la diagonal mayor: ");
+        diagonalMayor = Convert.ToDouble(Console.ReadLine());
+        return diagonalMayor;
+    }
+
+    public double ingresarDiagonalMenor()
+    {
+        double diagonalMenor;
+        Console.WriteLine("Ingrese el valor de la diagonal menor: ");
+        diagonalMenor = Convert.ToDouble(Console.ReadLine());
+        return diagonalMenor;
+    }
+
+    public void calcular(double baseMayor, double baseMenor)
+    {
+        double area; double perimetro; double cateto;
+        area = ((baseMayor * baseMenor) / 2);
+        cateto = Math.Sqrt(Math.Pow((diagonalMayor / 2),2) + Math.Pow((diagonalMenor / 2),2));
+        Console.WriteLine(cateto);
+        perimetro = cateto * 4.0;
+        Console.WriteLine("\nEl área del rombo es: {0:N2}", area);
+        Console.WriteLine("El perimetro del rombo es : {0:N2}\n", perimetro);
+        Console.Beep();
+    }
+}
 
 
 
@@ -223,9 +257,16 @@ public class Program
                     opcionMenu = continuar(); break;
 
                 case 4: Console.WriteLine("\nCÍRCULO");
+                    circulo circuloUsuario = new circulo();
+                    circuloUsuario.radio = circuloUsuario.ingresarRadio();
+                    circuloUsuario.calcular(circuloUsuario.radio);
                     opcionMenu = continuar(); break;
 
                 case 5: Console.WriteLine("\nROMBO");
+                    rombo romboUsuario = new rombo();
+                    romboUsuario.diagonalMayor = romboUsuario.ingresarDiagonalMayor();
+                    romboUsuario.diagonalMenor = romboUsuario.ingresarDiagonalMenor();
+                    romboUsuario.calcular(romboUsuario.diagonalMayor, romboUsuario.diagonalMenor);
                     opcionMenu = continuar(); break;
 
                 case 6: Console.WriteLine("\nTRAPECIO");
