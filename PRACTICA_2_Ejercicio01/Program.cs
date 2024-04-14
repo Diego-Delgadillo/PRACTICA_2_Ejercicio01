@@ -17,15 +17,33 @@ public class Program
         //declaramos las variables de control
         int opcion; //variable para la opcion del switch
         string cadena; //varaible que usa el metodo tryparse y compara si es string
-        bool num; 
+        bool num; //variable para evaluar si la funcion de tryparse es falso o verdadero
         bool opcionMenu = true; //varaible para el menu del programa
+
+        //funcion que sirve para indicar si continua o finaliza el programa
+        bool continuar()
+        {
+            int n; // variable para que solo ingrese numero
+            bool opcionMenu;
+
+           // ciclo que evalúa si es un numero dentro del rango
+         do
+            {
+                Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
+                n = Convert.ToInt32(Console.ReadLine()); //asigna el valor ya sea true or false
+            } while ((n != 1) && (n != 0));
+
+
+            opcionMenu = Convert.ToBoolean(n);
+            return opcionMenu;
+        }
 
        
         while (opcionMenu == true)
         {
             //inicia con un mensaje de lo que hace el programa
             Console.WriteLine("Este programa permite obtener el área y perímetro\n");
-
+         
 
             //ciclo para almacenar solamente números 
             do
@@ -41,54 +59,35 @@ public class Program
 
             switch (opcion)
             {
-                case 1: Console.WriteLine("\nCUADRADO"); 
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
+                case 1: Console.WriteLine("\nCUADRADO");
+                    opcionMenu = continuar();
                     break;
-
 
                 case 2: Console.WriteLine("\nRECTÁNGULO");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar();break;
 
                 case 3: Console.WriteLine("\nTRIÁNGULO");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar(); break;
 
                 case 4: Console.WriteLine("\nCÍRCULO");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar(); break;
 
                 case 5: Console.WriteLine("\nROMBO");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar(); break;
 
                 case 6: Console.WriteLine("\nTRAPECIO");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar(); break;
 
                 case 7: Console.WriteLine("\nPOLÍGONO REGULAR");
-                    Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                    opcionMenu = Convert.ToBoolean(Convert.ToInt32(Console.ReadLine())); //asigna el valor ya sea true or false
-                    break;
+                    opcionMenu = continuar(); break;
 
                 default: Console.WriteLine("Ingrese  una opción válida!"); Console.Beep(); break;
             }
         }
         Console.WriteLine("\n!Programa terminado!");
-
-
-
-       
-
+        Console.Beep();
 
         Console.ReadKey(true);
-
     }
 }
 
