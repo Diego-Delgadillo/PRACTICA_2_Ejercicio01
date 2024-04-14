@@ -10,6 +10,36 @@ del área como del perímetro
 
 using System;
 
+public class cuadrado//declaramos la clase para el cuadrado
+{
+    //atributos de la clase
+    public double lado; 
+
+    public double ingresarDatos()
+    {
+        double lado; 
+        Console.WriteLine("Ingrese el valor del lado: ");
+        lado = Convert.ToDouble(Console.ReadLine()); 
+        return lado;
+    }
+    //metodo para calcular el área y perímetro
+    public void calcular(double lado)
+    {
+        double area = (lado*lado);
+        double perimetro = (lado * 4);
+        Console.WriteLine("\nEl área del cuadrado es: " + area + "\nEl perímetro del cuadrado es: " + perimetro+ "\n");
+        Console.Beep();
+    }
+
+}
+
+
+
+
+
+
+
+
 public class Program
 {
     public static void Main()
@@ -38,13 +68,11 @@ public class Program
             return opcionMenu;
         }
 
-       
         while (opcionMenu == true)
         {
             //inicia con un mensaje de lo que hace el programa
             Console.WriteLine("Este programa permite obtener el área y perímetro\n");
          
-
             //ciclo para almacenar solamente números 
             do
             {
@@ -60,6 +88,9 @@ public class Program
             switch (opcion)
             {
                 case 1: Console.WriteLine("\nCUADRADO");
+                    cuadrado cuadradoUsuario = new cuadrado();
+                    cuadradoUsuario.lado = cuadradoUsuario.ingresarDatos();
+                    cuadradoUsuario.calcular(cuadradoUsuario.lado);
                     opcionMenu = continuar();
                     break;
 
@@ -86,7 +117,6 @@ public class Program
         }
         Console.WriteLine("\n!Programa terminado!");
         Console.Beep();
-
         Console.ReadKey(true);
     }
 }
