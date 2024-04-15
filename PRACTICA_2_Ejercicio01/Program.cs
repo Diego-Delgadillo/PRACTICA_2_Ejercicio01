@@ -183,8 +183,87 @@ public class rombo
     }
 }
 
+public class trapecio
+{//declaramos los atributos de la clase
+    public double baseMayor; public double baseMenor; public double altura;
+    
+    //metodos de la clase
+    public double ingresarBaseMayor()
+    {
+        double baseMayor;
+        Console.WriteLine("Ingrese el valor de la base mayor: ");
+        baseMayor = Convert.ToDouble(Console.ReadLine());
+        return baseMayor;
+    }
+
+    public double ingresarBaseMenor()
+    {
+        double baseMenor;
+        Console.WriteLine("Ingrese el valor de la base menor: ");
+        baseMenor = Convert.ToDouble(Console.ReadLine());
+        return baseMenor;
+    }
+
+    public double ingresarAltura()
+    {
+        double altura;
+        Console.WriteLine("Ingrese el valor de la altura: ");
+         altura = Convert.ToDouble(Console.ReadLine());
+        return altura;
+    }
+
+    public void calcular(double baseMayor, double baseMenor, double altura)
+    {
+        double area; double perimetro;
+        area = (((baseMayor + baseMenor)/2)*altura);
+        perimetro = (baseMayor + baseMenor + (2*Math.Sqrt(Math.Pow(baseMayor, 2) + Math.Pow(baseMenor, 2))));
+        Console.WriteLine("\nEl área del trapecio es: {0:N2}", area);
+        Console.WriteLine("El perimetro del trapecio es: {0:N2}\n", perimetro);
+        Console.Beep();
+    }
+}
+
+public class poligonoRegular
+{//declaramos los atributos de la clase
+    public double lado;
+    public int nlados;
+
+    //creamos los metodos para ingresar datos y calcular área y perímetro
+    public double ingresarLado()
+    {
+        double lado;
+        Console.WriteLine("Ingrese el valor de la longitud del lado: ");
+        lado = Convert.ToDouble(Console.ReadLine());
+        return lado;
+    }
+
+    public int ingresarNLados()
+    {
+        int nlados;
+        do // este ciclo es para que solo acepte numeros mayores o iguales a 3
+        {
+            Console.WriteLine("Ingrese el número de lados del poligono: ");
+            nlados = Convert.ToInt32(Console.ReadLine());
+        } while (nlados <= 3);
+        return nlados;
+    }
+
+    public void calcular(double lado, int nlados)
+    {
+        double area; double perimetro; double angulo; double apotema;
+        angulo = (360/(2.0*nlados));
+        angulo = ((angulo * Math.PI)/180);
+        apotema = lado/(2.0 * Math.Tan(angulo)); // este resultado es en radianes por lo que lo pasamos a grados
+        perimetro = (lado * nlados);
+        area = perimetro * apotema;
+        Console.WriteLine("\nEl área del polígono regular de {0} lados es: {1:N2}", nlados, area);
+        Console.WriteLine("El perímetro del polígono regular de {0} lados es: {1:N2}\n", nlados,perimetro);
+        Console.Beep();
+    }
+}
 
 
+//clase principal del programa
 public class Program
 {
     public static void Main()
@@ -270,15 +349,25 @@ public class Program
                     opcionMenu = continuar(); break;
 
                 case 6: Console.WriteLine("\nTRAPECIO");
+                    trapecio trapecioUsuario = new trapecio();
+                    trapecioUsuario.baseMayor = trapecioUsuario.ingresarBaseMayor();
+                    trapecioUsuario.baseMenor = trapecioUsuario.ingresarBaseMenor();
+                    trapecioUsuario.altura = trapecioUsuario.ingresarAltura();
+                    trapecioUsuario.calcular(trapecioUsuario.baseMayor, trapecioUsuario.baseMenor, trapecioUsuario.altura);
                     opcionMenu = continuar(); break;
 
                 case 7: Console.WriteLine("\nPOLÍGONO REGULAR");
+                    poligonoRegular poligonoUsuario = new poligonoRegular();
+                    poligonoUsuario.lado = poligonoUsuario.ingresarLado();
+                    poligonoUsuario.nlados = poligonoUsuario.ingresarNLados();
+                    poligonoUsuario.calcular(poligonoUsuario.lado, poligonoUsuario.nlados);
                     opcionMenu = continuar(); break;
 
                 default: Console.WriteLine("Ingrese  una opción válida!"); Console.Beep(); break;
             }
         }
         Console.WriteLine("\n!Programa terminado!");
+        Console.WriteLine("\nPresione cualquier tecla para salir :D");
         Console.Beep();
         Console.ReadKey(true);
     }
