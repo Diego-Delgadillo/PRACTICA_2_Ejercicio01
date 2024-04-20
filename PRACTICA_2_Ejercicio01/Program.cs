@@ -9,6 +9,7 @@ del área como del perímetro
 */
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 public class cuadrado//declaramos la clase para el cuadrado
 {
@@ -17,9 +18,17 @@ public class cuadrado//declaramos la clase para el cuadrado
 
     public double ingresarDatos()
     {
-        double lado; 
-        Console.WriteLine("Ingrese el valor del lado: ");
-        lado = Convert.ToDouble(Console.ReadLine()); 
+        double lado; string c; bool num;
+
+        do
+        {
+            Console.WriteLine("Ingrese el valor del lado: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out lado);
+            
+        } while (!num || lado < 0);
+        
+        lado = Convert.ToDouble(c);
         return lado;
     }
     //metodo para calcular el área y perímetro
@@ -36,19 +45,31 @@ public class rectangulo //clase del rectangulo
 {
     //atriubtos de la clase
     public double base_rect; public double altura_rect;
-
+        
     //metodos de la clase
     public double ingresarBase() //para ingresar la base del rectangulo
     {
-        Console.WriteLine("Ingrese el valor de la base: ");
-        base_rect = Convert.ToDouble(Console.ReadLine());     
-        return base_rect;
+        double base_rect; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la base: ");
+            c = Console.ReadLine(); 
+            num = double.TryParse(c, out base_rect);
+        } while (!num || base_rect <= 0);
+        base_rect = Convert.ToDouble(c);
+         return base_rect;
     }
 
     public double ingresarAltura() //para ingresar la altura del rectangulo
     {
-        Console.WriteLine("Ingrese el valor de la altura: ");
-        altura_rect = Convert.ToDouble(Console.ReadLine());
+        double altura_rect; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la altura: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out altura_rect);
+        } while (!num || altura_rect <= 0);
+        altura_rect = Convert.ToDouble(c);
         return altura_rect;
     }
 
@@ -59,7 +80,7 @@ public class rectangulo //clase del rectangulo
         area = (base_rect * altura_rect);
         perimetro = (base_rect*2) + (altura_rect*2);
         Console.WriteLine("\nEl área del rectángulo es: {0:N2}", area);
-        Console.WriteLine("El perimetro del rectángulo es: {0:N2}\n", perimetro);
+        Console.WriteLine("El perímetro del rectángulo es: {0:N2}\n", perimetro);
         Console.Beep();
     }
 }
@@ -73,41 +94,53 @@ public class triangulo //clase creada para el triangulo
     //metodos de la clase
     public double ingresarLado1()
     {
-        double lado1;
-        Console.WriteLine("Ingrese el valor del primer lado: ");
-        lado1 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        double lado1; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor del primer lado (BASE): ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out lado1);
+        } while (!num || lado1 <= 0);
+        lado1 = Convert.ToDouble(c); //convierte la cadea a un double
         return lado1;
     }
 
     public double ingresarLado2()
     {
-        double lado2;
-        Console.WriteLine("Ingrese el valor del segundo lado: ");
-        lado2 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        double lado2; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor del segundo lado: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out lado2);
+        } while (!num || lado2 <= 0);
+        lado2 = Convert.ToDouble(c); //convierte la cadea a un double
         return lado2;
     }
 
     public double ingresarLado3()
     {
-        double lado3;
-        Console.WriteLine("Ingrese el valor del tercer lado: ");
-        lado3 = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        double lado3; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor del tercer lado: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out lado3);
+        } while (!num || lado3 <= 0);
+        lado3 = Convert.ToDouble(c); //convierte la cadea a un double
         return lado3;
-    }
-
-    public double ingresarBase_tr()
-    {
-        double base_tr;
-        Console.WriteLine("Ingrese el valor de la base: ");
-        base_tr = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
-        return base_tr;
     }
 
     public double ingresarAltura_tr()
     {
-        double altura_tr;
-        Console.WriteLine("Ingrese el valor de la altura: ");
-        altura_tr = Convert.ToDouble(Console.ReadLine()); //convierte la cadea a un double
+        double altura_tr; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la altura: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out altura_tr);
+        } while (!num || altura_tr <= 0);
+        altura_tr = Convert.ToDouble(c);
         return altura_tr;
     }
 
@@ -115,7 +148,7 @@ public class triangulo //clase creada para el triangulo
     public void calcular(double lado1, double lado2, double lado3, double base_tr, double altura_tr)
     { //declaramos las variables a utilizar
         double area; double perimetro;
-        area = (base_tr * altura_tr);
+        area = ((lado1 * altura_tr) / 2);
         perimetro = (lado1 + lado2 + lado3);
         Console.WriteLine("\nEl área del triángulo es: {0:N2}", area); //muestra el valor del area
         Console.WriteLine("El valor del perímetro es: {0:N2}\n", perimetro);
@@ -131,9 +164,15 @@ public class circulo //clase para la figura del circulo
     //metodos de la clase
     public double ingresarRadio()
     {
-        double radio;
-        Console.WriteLine("Ingrese el valor del radio: ");
-        radio = Convert.ToDouble(Console.ReadLine());
+        double radio; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor del radio: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out radio);
+        } while (!num || radio <= 0);
+        
+        radio = Convert.ToDouble(c);
         return radio;
     }
 
@@ -143,7 +182,7 @@ public class circulo //clase para la figura del circulo
         area = (Math.PI * radio);
         perimetro = ((2*radio) * (Math.PI));
         Console.WriteLine("\nEl área del círculo es: {0:N2}", area);
-        Console.WriteLine("El perímetro del círculo es; {0:N2}\n", perimetro);
+        Console.WriteLine("El perímetro del círculo es: {0:N2}\n", perimetro);
         Console.Beep();
     }
 }
@@ -156,17 +195,29 @@ public class rombo
     //creamos los metodos
     public double ingresarDiagonalMayor()
     {
-        double diagonalMayor;
-        Console.WriteLine("Ingrese el valor de la diagonal mayor: ");
-        diagonalMayor = Convert.ToDouble(Console.ReadLine());
+        double diagonalMayor; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la diagonal mayor: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out diagonalMayor);
+        } while (!num || diagonalMayor <= 0);
+        
+        diagonalMayor = Convert.ToDouble(c);
         return diagonalMayor;
     }
 
     public double ingresarDiagonalMenor()
     {
-        double diagonalMenor;
-        Console.WriteLine("Ingrese el valor de la diagonal menor: ");
-        diagonalMenor = Convert.ToDouble(Console.ReadLine());
+        double diagonalMenor; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la diagonal menor: ");
+            c = Console.ReadLine(); 
+            num = double.TryParse(c, out diagonalMenor);
+        } while (!num || diagonalMenor <= 0);
+        
+        diagonalMenor = Convert.ToDouble(c);
         return diagonalMenor;
     }
 
@@ -175,7 +226,6 @@ public class rombo
         double area; double perimetro; double cateto;
         area = ((baseMayor * baseMenor) / 2);
         cateto = Math.Sqrt(Math.Pow((diagonalMayor / 2),2) + Math.Pow((diagonalMenor / 2),2));
-        Console.WriteLine(cateto);
         perimetro = cateto * 4.0;
         Console.WriteLine("\nEl área del rombo es: {0:N2}", area);
         Console.WriteLine("El perimetro del rombo es : {0:N2}\n", perimetro);
@@ -190,25 +240,41 @@ public class trapecio
     //metodos de la clase
     public double ingresarBaseMayor()
     {
-        double baseMayor;
-        Console.WriteLine("Ingrese el valor de la base mayor: ");
-        baseMayor = Convert.ToDouble(Console.ReadLine());
+        double baseMayor; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la base mayor: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out baseMayor);
+        } while (!num || baseMayor <= 0);
+        baseMayor = Convert.ToDouble(c);
         return baseMayor;
     }
 
     public double ingresarBaseMenor()
     {
-        double baseMenor;
-        Console.WriteLine("Ingrese el valor de la base menor: ");
-        baseMenor = Convert.ToDouble(Console.ReadLine());
+        double baseMenor; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la base menor: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out baseMenor);
+        } while (!num || baseMenor <= 0);
+        baseMenor = Convert.ToDouble(c);
         return baseMenor;
     }
 
     public double ingresarAltura()
     {
-        double altura;
-        Console.WriteLine("Ingrese el valor de la altura: ");
-         altura = Convert.ToDouble(Console.ReadLine());
+        double altura; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la altura: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out altura);
+        } while (!num || altura <= 0);
+        
+         altura = Convert.ToDouble(c);
         return altura;
     }
 
@@ -225,26 +291,33 @@ public class trapecio
 
 public class poligonoRegular
 {//declaramos los atributos de la clase
-    public double lado;
-    public int nlados;
+    public double lado; public int nlados;
 
     //creamos los metodos para ingresar datos y calcular área y perímetro
     public double ingresarLado()
     {
-        double lado;
-        Console.WriteLine("Ingrese el valor de la longitud del lado: ");
-        lado = Convert.ToDouble(Console.ReadLine());
+        double lado; string c; bool num;
+        do
+        {
+            Console.WriteLine("Ingrese el valor de la longitud del lado: ");
+            c = Console.ReadLine();
+            num = double.TryParse(c, out lado);
+        } while (!num || lado <= 0);
+        lado = Convert.ToDouble(c);
         return lado;
     }
 
     public int ingresarNLados()
     {
-        int nlados;
+        int nlados; string c; bool num;
         do // este ciclo es para que solo acepte numeros mayores o iguales a 3
         {
             Console.WriteLine("Ingrese el número de lados del poligono: ");
-            nlados = Convert.ToInt32(Console.ReadLine());
-        } while (nlados <= 3);
+            c = Console.ReadLine();
+            num = int.TryParse(c, out nlados);
+            
+        } while (!num || nlados <= 3);
+        nlados = Convert.ToInt32(c);
         return nlados;
     }
 
@@ -277,16 +350,16 @@ public class Program
         //funcion que sirve para indicar si continua o finaliza el programa
         bool continuar()
         {
-            int n; // variable para que solo ingrese numero
-            bool opcionMenu;
+            uint n; // variable para que solo ingrese numero
+            bool opcionMenu; string c; bool num;
 
            // ciclo que evalúa si es un numero dentro del rango
          do
-            {
+            {   
                 Console.WriteLine("Para continuar ingrese (1), para salir ingrese (0): ");
-                n = Convert.ToInt32(Console.ReadLine()); //asigna el valor ya sea true or false
-            } while ((n != 1) && (n != 0));
-
+                c =Console.ReadLine();
+                num = uint.TryParse(c, out n);
+            } while ((n > 1) || (n < 0) || !num);
 
             opcionMenu = Convert.ToBoolean(n);
             return opcionMenu;
@@ -330,7 +403,6 @@ public class Program
                     trianguloUsuario.lado1 = trianguloUsuario.ingresarLado1();
                     trianguloUsuario.lado2 = trianguloUsuario.ingresarLado2();
                     trianguloUsuario.lado3 = trianguloUsuario.ingresarLado3();
-                    trianguloUsuario.base_tr = trianguloUsuario.ingresarBase_tr();
                     trianguloUsuario.altura_tr = trianguloUsuario.ingresarAltura_tr();
                     trianguloUsuario.calcular(trianguloUsuario.lado1, trianguloUsuario.lado2, trianguloUsuario.lado3, trianguloUsuario.base_tr, trianguloUsuario.altura_tr);
                     opcionMenu = continuar(); break;
@@ -372,6 +444,3 @@ public class Program
         Console.ReadKey(true);
     }
 }
-
-
-
