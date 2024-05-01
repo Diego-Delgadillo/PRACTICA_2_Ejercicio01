@@ -19,6 +19,7 @@ public class cuadrado//declaramos la clase para el cuadrado
     public double ingresarDatos()
     {
         double lado; string c; bool num;
+        
 
         do
         {
@@ -385,6 +386,13 @@ public class Program
             switch (opcion)
             {
                 case 1: Console.WriteLine("\nCUADRADO");
+                    cuadrado cuadrado1 = new cuadrado(); //creamos obejto
+                    cuadrado1.lado = cuadrado1.ingresarDatos();
+                    cuadrado1.calcular
+
+
+
+
                     cuadrado cuadradoUsuario = new cuadrado();
                     cuadradoUsuario.lado = cuadradoUsuario.ingresarDatos();
                     cuadradoUsuario.calcular(cuadradoUsuario.lado);
